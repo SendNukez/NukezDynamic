@@ -1,5 +1,5 @@
-# DribbblishDynamic
-This is a tweaked version of Dribbblish theme. The main difference is that the highligh color is dynamic, ie. it will match the current album art colours (note: local files are excluded).
+# NukezDynamic
+This is a tweaked version of the DribbblishDynamic theme.
 
 ## Screenshots
 
@@ -18,11 +18,11 @@ Run these command:
 #### Linux and MacOS:
 In **Bash**:
 ```bash
-cd "$(dirname "$(spicetify -c)")/Themes/DribbblishDynamic"
+cd "$(dirname "$(spicetify -c)")/Themes/NukezDynamic"
 mkdir -p ../../Extensions
-cp dribbblish-dynamic.js ../../Extensions/.
-spicetify config extensions dribbblish-dynamic.js
-spicetify config current_theme DribbblishDynamic color_scheme dark
+cp nukez-dynamic.js ../../Extensions/.
+spicetify config extensions nukez-dynamic.js
+spicetify config current_theme NukezDynamic color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 spicetify apply
 ```
@@ -30,10 +30,10 @@ spicetify apply
 #### Windows
 In **Powershell**:
 ```powershell
-cd "$(spicetify -c | Split-Path)\Themes\DribbblishDynamic"
-Copy-Item dribbblish-dynamic.js ..\..\Extensions
-spicetify config extensions dribbblish-dynamic.js
-spicetify config current_theme DribbblishDynamic color_scheme dark
+cd "$(spicetify -c | Split-Path)\Themes\NukezDynamic"
+Copy-Item nukez-dynamic.js ..\..\Extensions
+spicetify config extensions nukez-dynamic.js
+spicetify config current_theme NukezDynamic color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 spicetify apply
 ```
@@ -57,10 +57,10 @@ spicetify apply
 
 # How to uninstall 
 
-Remove the dribbblish-dynamic script with the following commands 
+Remove the nukez-dynamic script with the following commands 
 
 ```
-spicetify config extensions dribbblish-dynamic.js-
+spicetify config extensions nukez-dynamic.js-
 spicetify apply
 ```
 
