@@ -9,9 +9,9 @@
     --main-gap: 10px;
     /* If you are using SpotifyNoControl.exe, set this variable to 0 */
     --os-windows-icon-dodge: 0;
+    --control-bar-color: #181818;
     --image_url: "";
     --is_light: 0;
-    --move_buddy_list: 0px;
 }
 
 div#popover-container::before {
@@ -51,6 +51,14 @@ body {
     --glue-font-family: "Google Sans Display", "spotify-circular", "Noto Sans CJK JP Bold", "spotify-circular-cyrillic", "spotify-circular-arabic", "spotify-circular-hebrew", "Helvetica Neue", Helvetica, Arial, "Hiragino Kaku Gothic Pro", "Meiryo", "MS Gothic", sans-serif;
     --info-font-family: "Roboto", "spotify-circular", "Noto Sans CJK JP Thin", "spotify-circular-cyrillic", "spotify-circular-arabic", "spotify-circular-hebrew", "Helvetica Neue", Helvetica, Arial, "Hiragino Kaku Gothic Pro", "Meiryo", "MS Gothic", sans-serif;
     letter-spacing: 0;
+}
+
+/* User Avatar */
+.avatar {
+    border-radius: var(--cover-border-radius) !important;
+    background-color: rgba(var(--modspotify_preserve_1), 0.3);
+    top: -2px;
+    margin-right: 4px;
 }
 
 /*Round corner cover image*/
@@ -155,7 +163,7 @@ body {
 
 .SearchInput__input {
     color: var(--modspotify_secondary_fg);
-    background-color: transparent;
+    background-color: rgba(var(--modspotify_rgb_main_fg), 0.1);
     padding-left: 34px;
     border-radius: 0;
     border-bottom: 0;
@@ -604,13 +612,13 @@ body.remotebar .view-player .player-bar-wrapper {
 
 .SidebarListItem--is-active:after,
 .RootlistItem--is-active:before {
-    background-color: var(--modspotify_pressing_button_fg);
-    opacity: 0.2;
+    background-color: var(--modspotify_preserve_1);
+    opacity: 0.3;
     bottom: unset;
     height: 50px;
     width: 50px;
-    border-radius: 10px;
-    left: 17px;
+    border-radius: var(--cover-border-radius) !important;
+    left: 18px;
     z-index: -1;
 }
 
@@ -985,10 +993,26 @@ select {
 
 /* Friend list */
 
+/* TODO: Add Shadow to Bottom of Friendslist */
 .body-container--windows .buddy-list-iframe {
-    margin-top: 48px;
-    margin-bottom: var(--move_buddy_list);
+    position: relative;
+    margin-top: 0px;
+    /*margin-bottom: calc(var(--large-album-art) + calc(var(--main-gap) * 3));*/
+    margin-bottom: calc(var(--large-album-art) + calc(var(--main-gap) * 2));
 }
+
+/*
+.body-container--windows .buddy-list-iframe::after {
+    content: "";
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: linear-gradient(180deg, transparent 0%, var(--modspotify_cover_overlay_and_shadow) 100%);
+}
+*/
 
 .buddy-list-title h3 {
     font-weight: 500;
@@ -1011,6 +1035,10 @@ select {
     font-weight: 400;
     font-family: var(--info-font-family);
     color: var(--modspotify_secondary_fg);
+}
+
+.friend .context-icon {
+    color: var(--modspotify_active_control_fg) !important;
 }
 
 .buddy-card .card .button {
@@ -1081,6 +1109,7 @@ body.video-full-screen .view-player {
 
 .progress-container .inner {
     border-radius: 0px 4px 4px 0px;
+    /*box-shadow: 0px 0px 3px 0px var(--modspotify_main_fg);*/
 }
 
 .progress-container .progress-bar-wrapper .handle {
@@ -1367,8 +1396,8 @@ button#player-button-repeat,
 #view-now-playing a.image.large figure,
 #view-now-playing a.image.large figure .cover-image {
     height: 100% !important;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2.5px 0px var(--modspotify_main_fg);
+    border-radius: var(--cover-border-radius) !important;
+    box-shadow: 0px 0px 3px 0px var(--modspotify_main_fg);
     transition: box-shadow 1s linear;
 }
 
@@ -1434,6 +1463,17 @@ button#player-button-repeat,
     min-width: 100%;
 }
 
+#menu-wrapper::after {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    left: 0px;
+    top: 0px;
+    height: 31px;
+    opacity: var(--os-windows-icon-dodge);
+    background-color: var(--control-bar-color);
+}
+
 .lyrics-color-container {
     background-color: transparent !important;
 }
@@ -1486,7 +1526,7 @@ button#player-button-repeat,
     width: calc(100% - var(--sidebar-width) - var(--main-gap));
     height: calc(100% - var(--bar-height) - var(--main-gap) * 2);
     left: var(--sidebar-width);
-    top: var(--main-gap);
+    top: calc(var(--main-gap) + calc(var(--os-windows-icon-dodge) * 30px));
     border-radius: var(--main-corner-radius) var(--main-corner-radius) 0 0;
     overflow: hidden;
 }
@@ -1542,9 +1582,9 @@ button[data-button="add-recommendation"] {
 #dribbblish-back-shadow {
     position: absolute;
     width: calc(100% - var(--sidebar-width) - var(--main-gap));
-    height: calc(100% - var(--main-gap) * 2);
+    height: calc(calc(100% - var(--main-gap) * 2) - calc(var(--os-windows-icon-dodge) * 30px));
     left: var(--sidebar-width);
-    top: var(--main-gap);
+    top: calc(var(--main-gap) + calc(var(--os-windows-icon-dodge) * 30px));
     box-shadow: 0 0 10px 3px #0000003b;
     border-radius: var(--main-corner-radius);
     z-index: 1;
@@ -1616,5 +1656,5 @@ button[data-button="add-recommendation"] {
 
 .SearchInput__input:focus,
 .SearchInput__input:hover {
-    background-color: rgba(var(--modspotify_rgb_main_fg), 0.05);
+    background-color: rgba(var(--modspotify_rgb_main_fg), 0.2);
 }
