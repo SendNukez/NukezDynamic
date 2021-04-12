@@ -61,6 +61,18 @@ body {
     margin-right: 4px;
 }
 
+/* Resizing handles */
+.resizer {
+    background-color: var(--modspotify_main_fg);
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+}
+
+.resizer:hover,
+.resizer:active {
+    opacity: 0.3;
+}
+
 /*Round corner cover image*/
 
 .card-image,
@@ -673,7 +685,7 @@ body.remotebar .view-player .player-bar-wrapper {
 .offline-label-wrapper,
 .sidebar #offline-global-progress {
     bottom: calc(var(--bar-height) + var(--main-gap));
-    left: calc(var(--sidebar-width));
+    left: var(--sidebar-width);
     z-index: 4;
     margin-right: 24px;
     position: absolute;
@@ -993,26 +1005,24 @@ select {
 
 /* Friend list */
 
-/* TODO: Add Shadow to Bottom of Friendslist */
 .body-container--windows .buddy-list-iframe {
     position: relative;
     margin-top: 0px;
-    /*margin-bottom: calc(var(--large-album-art) + calc(var(--main-gap) * 3));*/
-    margin-bottom: calc(var(--large-album-art) + calc(var(--main-gap) * 2));
+    margin-bottom: calc(var(--large-album-art) + var(--main-gap));
 }
 
-/*
-.body-container--windows .buddy-list-iframe::after {
+/* TODO: Add Shadow to Bottom of Friendslist */
+#iframe-buddy-list::after {
     content: "";
+    z-index: 100;
     position: absolute;
     height: 50px;
     width: 100%;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    background: linear-gradient(180deg, transparent 0%, var(--modspotify_cover_overlay_and_shadow) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--modspotify_cover_overlay_and_shadow) 100%);
 }
-*/
 
 .buddy-list-title h3 {
     font-weight: 500;
@@ -1389,7 +1399,7 @@ button#player-button-repeat,
 }
 
 #view-now-playing.expanded {
-    bottom: calc(2 * var(--main-gap) + var(--bar-height) + 2px);
+    bottom: calc(2 * var(--main-gap) + var(--bar-height));
     right: calc(2 * var(--main-gap));
 }
 
@@ -1526,7 +1536,7 @@ button#player-button-repeat,
     width: calc(100% - var(--sidebar-width) - var(--main-gap));
     height: calc(100% - var(--bar-height) - var(--main-gap) * 2);
     left: var(--sidebar-width);
-    top: calc(var(--main-gap) + calc(var(--os-windows-icon-dodge) * 30px));
+    top: calc(var(--main-gap) + var(--os-windows-icon-dodge) * 30px);
     border-radius: var(--main-corner-radius) var(--main-corner-radius) 0 0;
     overflow: hidden;
 }
@@ -1582,10 +1592,10 @@ button[data-button="add-recommendation"] {
 #dribbblish-back-shadow {
     position: absolute;
     width: calc(100% - var(--sidebar-width) - var(--main-gap));
-    height: calc(calc(100% - var(--main-gap) * 2) - calc(var(--os-windows-icon-dodge) * 30px));
+    height: calc(100% - var(--main-gap) * 2 - var(--os-windows-icon-dodge) * 30px);
     left: var(--sidebar-width);
     top: calc(var(--main-gap) + calc(var(--os-windows-icon-dodge) * 30px));
-    box-shadow: 0 0 10px 3px #0000003b;
+    box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
     border-radius: var(--main-corner-radius);
     z-index: 1;
 }
