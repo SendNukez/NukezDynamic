@@ -9,15 +9,16 @@
     --main-gap: 10px;
     --sidebar-width: calc(var(--main-gap) * 2 + var(--sidebar-icon-size));
     /* If you are using SpotifyNoControl.exe, set this variable to 0 */
-    --os-windows-icon-dodge: 0;
+    --os-windows-icon-dodge: 1;
     --enable-shadows: 1;
-    --control-bar-color: #181818;
     --image_url: "";
     --is_light: 0;
 }
 
+/* TODO: Fix blur under player controls */
+
 div#popover-container::before {
-    content: "You haven't installed 'dribbblish-dynamic.js' extension. Please follow instructions on theme README page.";
+    content: "You haven't installed the 'nukez-dynamic.js' extension. Please follow instructions on theme README page.";
     font-size: 30px;
 }
 
@@ -1490,7 +1491,9 @@ button#player-button-repeat,
     top: 0px;
     height: 31px;
     opacity: var(--os-windows-icon-dodge);
-    background-color: var(--control-bar-color);
+    background-color: #181818;
+    -webkit-app-region: drag;
+    pointer-events: none;
 }
 
 .lyrics-color-container {
@@ -1618,11 +1621,11 @@ button[data-button="add-recommendation"] {
     display: block !important;
     bottom: calc(var(--main-gap) * -1);
     width: 100vw;
-    height: 10%;
+    height: 100px;
     z-index: 3;
     pointer-events: none;
     mask-image: none;
-    -webkit-mask-image: linear-gradient(to top, #000000ff 10%, #00000000); /* Using -webkit-mask-image because you can't transition gradient backgrounds */
+    -webkit-mask-image: linear-gradient(to top, #000000ff 50%, #00000000); /* Using -webkit-mask-image because you can't transition gradient backgrounds */
     background-color: var(--modspotify_secondary_bg);
     transition: background-color 1.5s linear;
 }
