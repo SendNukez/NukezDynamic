@@ -4,11 +4,13 @@
     --large-album-art: 225px;
     --cover-border-radius: 8px;
     --section-border-radius: 8px;
-    --sidebar-width: 85px;
+    --sidebar-icon-size: 50px;
     --main-corner-radius: 15px;
     --main-gap: 10px;
+    --sidebar-width: calc(var(--main-gap) * 2 + var(--sidebar-icon-size));
     /* If you are using SpotifyNoControl.exe, set this variable to 0 */
     --os-windows-icon-dodge: 0;
+    --enable-shadows: 1;
     --control-bar-color: #181818;
     --image_url: "";
     --is_light: 0;
@@ -597,6 +599,9 @@ body.remotebar .view-player .player-bar-wrapper {
 
 /* Sidebar */
 .LeftSidebar {
+    position: relative;
+    top: -5px;
+    min-height: calc(100% + 10px);
     width: var(--sidebar-width);
 }
 
@@ -618,19 +623,20 @@ body.remotebar .view-player .player-bar-wrapper {
 .scrollbar-style-visible-linux .RootlistItem,
 .scrollbar-style-visible-mac .RootlistItem,
 .scrollbar-style-visible-windows .RootlistItem {
-    padding-right: var(--left-sidebar-padding-right);
-    padding-left: var(--left-sidebar-padding-left);
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 .SidebarListItem--is-active:after,
 .RootlistItem--is-active:before {
     background-color: var(--modspotify_preserve_1);
+    box-shadow: 0px 0px calc(var(--enable-shadows) * 2px) calc(var(--enable-shadows) * 3px) var(--modspotify_preserve_1);
     opacity: 0.3;
     bottom: unset;
-    height: 50px;
-    width: 50px;
+    height: var(--sidebar-icon-size);
+    width: var(--sidebar-icon-size);
     border-radius: var(--cover-border-radius) !important;
-    left: 18px;
+    left: var(--main-gap);
     z-index: -1;
 }
 
@@ -648,6 +654,7 @@ body.remotebar .view-player .player-bar-wrapper {
 }
 
 .body-container--windows .LeftSidebar {
+    overflow: visible;
     margin-top: calc(var(--os-windows-icon-dodge) * 30px);
 }
 
@@ -713,10 +720,12 @@ body.remotebar .view-player .player-bar-wrapper {
     font-size: 14px;
     font-family: var(--info-font-family);
     font-weight: 400;
-    color: var(--modspotify_main_bg);
+    color: var(--modspotify_secondary_fg);
     border-radius: 4px;
-    background-color: var(--modspotify_secondary_fg);
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 4px 8px;
+    border: 0px;
+    box-shadow: 0px 0px calc(var(--enable-shadows) * 2px) calc(var(--enable-shadows) * 2px) rgba(0, 0, 0, 0.5);
 }
 
 .genre-card:hover .gc-label-text {
@@ -989,11 +998,11 @@ select {
 }
 
 .slider.enabled {
-    background: var(--modspotify_sidebar_indicator_and_hover_button_bg);
+    background: var(--modspotify_main_fg);
 }
 
 .slider.enabled div {
-    background: var(--modspotify_main_fg);
+    background: var(--modspotify_secondary_fg);
 }
 
 .slider div {
@@ -1119,7 +1128,7 @@ body.video-full-screen .view-player {
 
 .progress-container .inner {
     border-radius: 0px 4px 4px 0px;
-    /*box-shadow: 0px 0px 3px 0px var(--modspotify_main_fg);*/
+    box-shadow: 0px 0px calc(var(--enable-shadows) * 3px) 0px var(--modspotify_main_fg);
 }
 
 .progress-container .progress-bar-wrapper .handle {
@@ -1407,8 +1416,8 @@ button#player-button-repeat,
 #view-now-playing a.image.large figure .cover-image {
     height: 100% !important;
     border-radius: var(--cover-border-radius) !important;
-    box-shadow: 0px 0px 3px 0px var(--modspotify_main_fg);
-    transition: box-shadow 1s linear;
+    box-shadow: 0px 0px calc(var(--enable-shadows) * 3px) 0px var(--modspotify_main_fg);
+    transition: box-shadow 1.5s linear;
 }
 
 .playlist-picture {
@@ -1514,6 +1523,10 @@ button#player-button-repeat,
     overflow: unset;
 }
 
+.SidebarListItem__link {
+    overflow: visible;
+}
+
 .RootlistItemFolder__name:before,
 .RootlistItemFolder__arrow:before,
 .SidebarListItem__label:before {
@@ -1602,12 +1615,15 @@ button[data-button="add-recommendation"] {
 
 #dribbblish-sidebar-fade-in {
     position: absolute;
-    bottom: 0;
-    width: var(--sidebar-width);
+    display: block !important;
+    bottom: calc(var(--main-gap) * -1);
+    width: 100vw;
     height: 10%;
-    background: linear-gradient(to top, var(--modspotify_secondary_bg) 10%, transparent);
     z-index: 3;
     pointer-events: none;
+    -webkit-mask-image: linear-gradient(to top, #000000ff 10%, #00000000); /* Using -webkit-mask-image because you can't transition gradient backgrounds */
+    background-color: var(--modspotify_secondary_bg);
+    transition: background-color 1.5s linear;
 }
 
 #content .app-content,
