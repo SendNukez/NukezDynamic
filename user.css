@@ -1520,6 +1520,7 @@ button#player-button-repeat,
 .SidebarListItemLink:before {
     color: var(--modspotify_preserve_1);
     margin-right: 0;
+    transition: color 250ms linear;
 }
 
 .SidebarListItem__label {
@@ -1534,6 +1535,7 @@ button#player-button-repeat,
 .RootlistItemFolder__arrow:before,
 .SidebarListItem__label:before {
     color: var(--modspotify_preserve_1);
+    transition: color 250ms linear;
 }
 
 .sidebar .sidebar-navbar {
