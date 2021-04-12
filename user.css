@@ -656,7 +656,7 @@ body.remotebar .view-player .player-bar-wrapper {
 
 .body-container--windows .LeftSidebar {
     overflow: visible;
-    margin-top: calc(var(--os-windows-icon-dodge) * 30px);
+    margin-top: calc(var(--os-windows-icon-dodge) * 31px);
 }
 
 .body-container--mac .LeftSidebar {
