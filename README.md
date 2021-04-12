@@ -4,13 +4,7 @@ This is a tweaked version of the DribbblishDynamic theme.
 
 ## Screenshots
 
-#### Dark
-
-![demo-dark](./color-match-bg.gif)
-
-#### White
-
-![demo-white](./white.png)
+*Coming when the Skin is done*
 
 ## More
 
