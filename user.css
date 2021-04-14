@@ -1083,7 +1083,7 @@ select {
     left: var(--sidebar-width);
     border-radius: 0 0 var(--main-corner-radius) var(--main-corner-radius);
     z-index: 2;
-    background: var(--modspotify_sidebar_and_player_bg);
+    background: radial-gradient(ellipse at right 50% bottom -80px, rgba(var(--modspotify_rgb_main_bg), 0.45), var(--modspotify_main_bg) 70%);
 }
 
 body.video-full-screen .view-player {
@@ -1551,7 +1551,7 @@ button#player-button-repeat,
 .main-view-wrapper {
     position: absolute;
     width: calc(100% - var(--sidebar-width) - var(--main-gap));
-    height: calc(100% - var(--bar-height) - var(--main-gap) * 2);
+    height: calc(100% - var(--bar-height) - var(--main-gap) * 2 - var(--os-windows-icon-dodge) * 30px);
     left: var(--sidebar-width);
     top: calc(var(--main-gap) + var(--os-windows-icon-dodge) * 30px);
     border-radius: var(--main-corner-radius) var(--main-corner-radius) 0 0;
