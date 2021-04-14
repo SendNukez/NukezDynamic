@@ -1083,8 +1083,7 @@ select {
     left: var(--sidebar-width);
     border-radius: 0 0 var(--main-corner-radius) var(--main-corner-radius);
     z-index: 2;
-    /* Glowing effect */
-    background: radial-gradient(ellipse at right 50% bottom -80px, rgba(var(--modspotify_rgb_main_bg), 0.45), var(--modspotify_main_bg) 70%);
+    background: var(--modspotify_sidebar_and_player_bg);
 }
 
 body.video-full-screen .view-player {
