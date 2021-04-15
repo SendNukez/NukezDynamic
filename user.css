@@ -15,8 +15,6 @@
     --is_light: 0;
 }
 
-/* TODO: Fix blur under player controls */
-
 div#popover-container::before {
     content: "You haven't installed the 'nukez-dynamic.js' extension. Please follow instructions on theme README page.";
     font-size: 30px;
