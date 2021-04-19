@@ -445,6 +445,7 @@ body {
 .button.button-icon-with-stroke:hover {
     transform: none !important;
     background-color: var(--modspotify_sidebar_indicator_and_hover_button_bg) !important;
+    color: var(--modspotify_preserve_1) !important;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.26) !important;
 }
 
@@ -776,12 +777,14 @@ body.remotebar .view-player .player-bar-wrapper {
     border: 1px solid var(--modspotify_slider_bg);
 }
 
-.tl-row.current .tl-cell:not(.tl-number),
-.tl-row.current .tl-cell a:link,
-.tl-row.current .tl-highlight,
+.tl-row.current *,
 .TableCellSong--track-is-playing .TableCellSong__featuredArtist,
 .TableCellSong--track-is-playing .TableCellSong__text-truncator,
 .TableCellSong--track-is-playing .TableCellSong__track-name {
+    color: var(--modspotify_main_fg);
+}
+
+.tl-header th {
     color: var(--modspotify_main_fg);
 }
 
@@ -814,14 +817,37 @@ select {
 
 /* Search bar in app */
 
+.h-search-field-outer-wrapper {
+    height: 50px;
+}
+
+.h-search-field-wrapper,
+.h-search-wrapper {
+    height: 100%;
+}
+
+.h-search-wrapper::before,
+.h-search-close::before {
+    color: var(--modspotify_main_fg);
+    height: 50px;
+    line-height: 30px;
+}
+
 .h-search {
-    border-bottom: 1px solid var(--modspotify_main_fg);
-    border-radius: 0;
+    color: var(--modspotify_secondary_fg);
+    background-color: rgba(var(--modspotify_rgb_main_fg), 0.1);
+    border-radius: 25px;
+    height: 100%;
+}
+
+.h-search::placeholder {
+    color: var(--modspotify_main_fg);
 }
 
 .focus .h-search,
-.h-search:focus {
-    background: none;
+.h-search:focus,
+.h-search:hover {
+    background-color: rgba(var(--modspotify_rgb_main_fg), 0.2);
 }
 
 /* Card buttons */
