@@ -749,6 +749,10 @@ body.remotebar .view-player .player-bar-wrapper {
     color: var(--modspotify_secondary_fg);
 }
 
+.tl-row:hover > .tl-cell {
+    background-color: rgba(var(--modspotify_rgb_main_fg), 0.1);
+}
+
 .tl-row.selected .tl-cell,
 .tl-row.selected:hover .tl-cell,
 .TableRow.TableRow--is-selected .TableCell {
@@ -1514,7 +1518,7 @@ button#player-button-repeat,
     top: 0px;
     height: 31px;
     opacity: var(--os-windows-icon-dodge);
-    background-color: #181818;
+    background-color: var(--modspotify_sidebar_and_player_bg);
     -webkit-app-region: drag;
     pointer-events: none;
 }
