@@ -54,6 +54,10 @@ body {
     letter-spacing: 0;
 }
 
+a[href]:hover {
+    color: var(--modspotify_main_fg) !important;
+}
+
 /* User Avatar */
 .avatar {
     border-radius: var(--cover-border-radius) !important;
@@ -177,7 +181,7 @@ body {
 .SearchInput__input {
     color: var(--modspotify_secondary_fg);
     background-color: rgba(var(--modspotify_rgb_main_fg), 0.1);
-    padding-left: 34px;
+    padding-left: 28px;
     border-radius: 0;
     border-bottom: 0;
 }
