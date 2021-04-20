@@ -1093,6 +1093,14 @@ select {
     color: var(--modspotify_active_control_fg) !important;
 }
 
+.friend .user-placeholder {
+    fill: var(--modspotify_main_fg);
+}
+
+.friend .card-placeholder-wrapper {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
 .buddy-card .card .button {
     right: 0;
     bottom: 0;
@@ -1101,6 +1109,10 @@ select {
 .buddy-card .card .button:before {
     font-size: 16px !important;
     line-height: 40px !important;
+}
+
+.status-containers {
+    color: var(--modspotify_main_fg);
 }
 
 /*Force player bar to has fixed height*/
