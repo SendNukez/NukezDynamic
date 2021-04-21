@@ -7,7 +7,8 @@
     --sidebar-icon-size: 50px;
     --main-corner-radius: 15px;
     --main-gap: 10px;
-    --sidebar-width: calc(var(--main-gap) * 2 + var(--sidebar-icon-size));
+    --sidebar-padding: var(--main-gap);
+    --sidebar-width: calc(var(--sidebar-padding) * 2 + var(--sidebar-icon-size));
     /* If you are using SpotifyNoControl.exe, set this variable to 0 */
     --os-windows-icon-dodge: 1;
     --enable-shadows: 1;
@@ -604,7 +605,6 @@ body.remotebar .view-player .player-bar-wrapper {
 /* Sidebar */
 .LeftSidebar {
     position: relative;
-    top: -5px;
     min-height: calc(100% + 10px);
     width: var(--sidebar-width);
 }
@@ -618,10 +618,19 @@ body.remotebar .view-player .player-bar-wrapper {
     font-weight: 500;
 }
 
-.LeftSidebar .SidebarListItem,
+.SidebarList__list {
+    display: grid;
+    gap: var(--main-gap);
+}
+
+.SidebarListItem,
 .RootlistItem {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--sidebar-icon-size);
+    height: var(--sidebar-icon-size);
+    padding: 0px;
 }
 
 .scrollbar-style-visible-linux .RootlistItem,
@@ -647,35 +656,27 @@ body.remotebar .view-player .player-bar-wrapper {
     content: "";
     display: block;
     position: absolute;
-    top: 3px;
     background-color: var(--modspotify_preserve_1);
     box-shadow: 0px 0px calc(var(--enable-shadows) * 2px) calc(var(--enable-shadows) * 3px) var(--modspotify_preserve_1);
     opacity: 0;
     bottom: unset;
+    top: 0px !important;
+    left: 0px !important;
     height: var(--sidebar-icon-size);
     width: var(--sidebar-icon-size);
     border-radius: var(--cover-border-radius) !important;
-    left: var(--main-gap);
     z-index: -1;
     transition: opacity 150ms ease-in-out;
 }
 
 .SidebarListItem:hover:after,
 .RootlistItem:hover:before {
-    opacity: 0.2;
+    opacity: 0.25;
 }
 
 .SidebarListItem--is-active:after,
 .RootlistItem--is-active:before {
-    opacity: 0.4 !important;
-}
-
-.LeftSidebar__section .SidebarListItem--is-active:after {
-    top: 6px;
-}
-
-.LeftSidebar__scroll-section .SidebarListItem--is-active:after {
-    top: 3px;
+    opacity: 0.5 !important;
 }
 
 .body-container--mac .sidebar-top-items__drag-area,
@@ -686,6 +687,7 @@ body.remotebar .view-player .player-bar-wrapper {
 .body-container--windows .LeftSidebar {
     overflow: visible;
     margin-top: calc(var(--os-windows-icon-dodge) * 31px);
+    padding: 0px var(--sidebar-padding);
 }
 
 .body-container--mac .LeftSidebar {
@@ -1510,6 +1512,10 @@ button#player-button-repeat,
     justify-content: center;
 }
 
+.LeftSidebar__section--rootlist {
+    overflow: visible;
+}
+
 .RootlistItem__link .SidebarListItemLink {
     margin-left: 0;
 }
@@ -1539,10 +1545,6 @@ button#player-button-repeat,
 
 .LeftSidebar__section {
     margin: 0;
-}
-
-.LeftSidebar__section.LeftSidebar__section--rootlist {
-    padding: 18px 0;
 }
 
 #new-playlist-button-mount-point {
@@ -1617,7 +1619,13 @@ button#player-button-repeat,
 }
 
 .LeftSidebar__scroll-section {
+    display: grid;
+    gap: var(--main-gap);
     background-color: unset;
+    padding: 5px;
+    width: calc(100% + 10px);
+    position: relative;
+    left: -5px;
 }
 
 .main-view-wrapper {
@@ -1693,6 +1701,7 @@ button[data-button="add-recommendation"] {
     position: absolute;
     display: block !important;
     bottom: calc(var(--main-gap) * -1);
+    left: calc(var(--main-gap) * -1);
     width: 100vw;
     height: 100px;
     z-index: 3;
