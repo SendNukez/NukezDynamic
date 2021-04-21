@@ -631,17 +631,43 @@ body.remotebar .view-player .player-bar-wrapper {
     padding-left: 0px;
 }
 
-.SidebarListItem--is-active:after,
-.RootlistItem--is-active:before {
+.SidebarListItemLink,
+.playlist-picture {
+    transition: transform 150ms ease-in-out;
+}
+
+.SidebarListItem:hover .SidebarListItemLink,
+.RootlistItem:hover .playlist-picture {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+
+.SidebarListItem:after,
+.RootlistItem:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
     background-color: var(--modspotify_preserve_1);
     box-shadow: 0px 0px calc(var(--enable-shadows) * 2px) calc(var(--enable-shadows) * 3px) var(--modspotify_preserve_1);
-    opacity: 0.3;
+    opacity: 0;
     bottom: unset;
     height: var(--sidebar-icon-size);
     width: var(--sidebar-icon-size);
     border-radius: var(--cover-border-radius) !important;
     left: var(--main-gap);
     z-index: -1;
+    transition: opacity 150ms ease-in-out;
+}
+
+.SidebarListItem:hover:after,
+.RootlistItem:hover:before {
+    opacity: 0.2;
+}
+
+.SidebarListItem--is-active:after,
+.RootlistItem--is-active:before {
+    opacity: 0.4 !important;
 }
 
 .LeftSidebar__section .SidebarListItem--is-active:after {
@@ -1173,6 +1199,8 @@ body.video-full-screen .view-player {
 .progress-container .inner {
     border-radius: 0px 4px 4px 0px;
     box-shadow: 0px 0px calc(var(--enable-shadows) * 3px) 0px var(--modspotify_main_fg);
+    right: 100%;
+    transition: right 100ms linear;
 }
 
 .progress-container .progress-bar-wrapper .handle {
@@ -1721,11 +1749,7 @@ button[data-button="add-recommendation"] {
 }
 
 .browser-navigation-top-bar .button:hover,
-.browser-navigation-top-bar .button:hover:before,
-.RootlistItemFolder__name:hover:before,
-.RootlistItemFolder__arrow:hover:before,
-.SidebarListItem__label:hover:before,
-.SidebarListItemLink:hover:before {
+.browser-navigation-top-bar .button:hover:before {
     color: var(--modspotify_pressing_button_fg);
 }
 
