@@ -604,6 +604,8 @@ body.remotebar .view-player .player-bar-wrapper {
 
 /* Sidebar */
 .LeftSidebar {
+    display: grid;
+    gap: var(--main-gap);
     position: relative;
     min-height: calc(100% + 10px);
     width: var(--sidebar-width);
@@ -1626,6 +1628,7 @@ button#player-button-repeat,
     width: calc(100% + 10px);
     position: relative;
     left: -5px;
+    top: -5px;
 }
 
 .main-view-wrapper {
