@@ -783,8 +783,13 @@ body.remotebar .view-player .player-bar-wrapper {
     color: var(--modspotify_secondary_fg);
 }
 
-.tl-row:hover > .tl-cell {
+.tl-row:hover .tl-cell {
     background-color: rgba(var(--modspotify_rgb_main_fg), 0.1);
+}
+
+.tl-row:hover .tl-cell,
+.tl-row:hover .tl-cell * {
+    color: var(--modspotify_main_fg);
 }
 
 .tl-row.selected .tl-cell,
