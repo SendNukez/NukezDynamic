@@ -1607,6 +1607,10 @@ button#player-button-repeat,
     overflow: unset;
 }
 
+.SidebarListItem__label:not([class*="spoticon-"]) {
+    display: none;
+}
+
 .SidebarListItem__link {
     overflow: visible;
 }

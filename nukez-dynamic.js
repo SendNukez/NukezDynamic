@@ -1,3 +1,5 @@
+/// <reference path="./globals.d.ts"/>
+
 // Hide popover message
 document.getElementById("popover-container").style.height = 0;
 
