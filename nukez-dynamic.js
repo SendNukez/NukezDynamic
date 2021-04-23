@@ -1,4 +1,4 @@
-/// <reference path="./globals.d.ts"/>
+/// <reference path="../../../spicetify-cli/globals.d.ts"/>
 
 // Hide popover message
 document.getElementById("popover-container").style.height = 0;
