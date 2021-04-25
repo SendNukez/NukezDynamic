@@ -210,6 +210,10 @@ var observer = new MutationObserver(function (mutations) {
     });
 });
 
+function isValidDate(d) {
+    return d instanceof Date && !isNaN(d);
+}
+
 function getAlbumInfo(uri) {
     return new Promise((resolve) => {
         Spicetify.CosmosAPI.resolver.get(`hm://album/v1/album-app/album/${uri}/desktop`, (err, raw) => {
@@ -310,7 +314,8 @@ function trickHideGradient(display) {
 }
 
 async function songchange() {
-    let album_uri = Spicetify.Player.data.track.metadata.album_uri;
+    const metadata = Spicetify.Player.data.track.metadata;
+    const album_uri = metadata.album_uri;
 
     if (album_uri !== undefined) {
         const albumInfo = await getAlbumInfo(album_uri.replace("spotify:album:", ""));
@@ -318,16 +323,18 @@ async function songchange() {
         let album_date = new Date(albumInfo.year, (albumInfo.month || 1) - 1, albumInfo.day || 0);
         let recent_date = new Date();
         recent_date.setMonth(recent_date.getMonth() - 6);
-        album_date = album_date.toLocaleString("default", album_date > recent_date ? { year: "numeric", month: "short" } : { year: "numeric" });
-        album_link = '<a title="' + Spicetify.Player.data.track.metadata.album_title + '" href="' + album_uri + '" data-uri="' + album_uri + '" data-interaction-target="album-name" class="tl-cell__content">' + Spicetify.Player.data.track.metadata.album_title + "</a>";
+        album_date = isValidDate(album_date) ? " • " + album_date.toLocaleString("default", album_date > recent_date ? { year: "numeric", month: "short" } : { year: "numeric" }) : "";
+        album_link = `<a title="${metadata.album_title}" href="${album_uri}" data-uri="${album_uri}" data-interaction-target="album-name" class="tl-cell__content">${metadata.album_title}</a>`;
 
-        if (nearArtistSpan !== null) nearArtistSpan.innerHTML = " — " + album_link + " • " + album_date;
-    } else if (Spicetify.Player.data.track.metadata.album_track_number == 0) {
+        const artistSeperator = document.querySelector(".inner-text-span[data-interaction-list]").innerText != "" ? " — " : "";
+
+        if (nearArtistSpan !== null) nearArtistSpan.innerHTML = `${artistSeperator}${album_link}${album_date}`;
+    } else if (metadata.album_track_number == 0) {
         // podcast
-        nearArtistSpan.innerText = Spicetify.Player.data.track.metadata.album_title;
-    } else if (Spicetify.Player.data.track.metadata.is_local == "true") {
+        nearArtistSpan.innerText = metadata.album_title;
+    } else if (metadata.is_local == "true") {
         // local file
-        nearArtistSpan.innerText = " — " + Spicetify.Player.data.track.metadata.album_title;
+        nearArtistSpan.innerText = " — " + metadata.album_title;
     } else {
         // When clicking a song from the homepage, songChange is fired with half empty metadata
         // todo: retry only once?
