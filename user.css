@@ -1523,6 +1523,10 @@ button#player-button-repeat,
     overflow: visible;
 }
 
+.Rootlist {
+    margin-bottom: calc(var(--main-gap) * 2);
+}
+
 .RootlistItem__link .SidebarListItemLink {
     margin-left: 0;
 }
