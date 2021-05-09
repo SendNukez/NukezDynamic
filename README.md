@@ -4,7 +4,7 @@ This is a tweaked version of the DribbblishDynamic theme.
 
 ## Screenshots
 
-*Coming when the Skin is done*
+_Coming when the Skin is done_
 
 ## More
 
@@ -19,9 +19,13 @@ Run these command:
 In **Bash**:
 
 ```bash
-cd "$(dirname "$(spicetify -c)")/Themes/NukezDynamic"
+cd "$(dirname "$(spicetify -c)")/Themes/"
+git clone https://github.com/SendNukez/NukezDynamic.git NukezDynamic
+
+cd NukezDynamic
 mkdir -p ../../Extensions
 cp nukez-dynamic.js ../../Extensions/.
+
 spicetify config extensions nukez-dynamic.js
 spicetify config current_theme NukezDynamic color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
@@ -33,8 +37,15 @@ spicetify apply
 In **Powershell**:
 
 ```powershell
-cd "$(spicetify -c | Split-Path)\Themes\NukezDynamic"
+cd "$(spicetify -c | Split-Path)\Themes\"
+Invoke-WebRequest -Uri https://github.com/SendNukez/NukezDynamic/archive/master.zip -UseBasicParsing -OutFile .\NukezDynamic.zip
+Expand-Archive -Path .\NukezDynamic.zip -DestinationPath .
+Remove-Item NukezDynamic.zip
+Rename-Item "NukezDynamic-master" "NukezDynamic"
+cd NukezDynamic
+
 Copy-Item nukez-dynamic.js ..\..\Extensions
+
 spicetify config extensions nukez-dynamic.js
 spicetify config current_theme NukezDynamic color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
