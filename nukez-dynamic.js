@@ -136,10 +136,10 @@ waitForElement([".LeftSidebar", ".LeftSidebar__section--rootlist .SidebarList__l
 
     queries[0].querySelectorAll(".LeftSidebar__section:not(.LeftSidebar__section--rootlist) [href]").forEach((item) => {
         let icon = ((app) => {
-            switch (app) {
+            switch (app.toLowerCase()) {
                 case "genius":
                     return "lyrics";
-                case "JQBX":
+                case "jqbx":
                     return "addsuggestedsong";
                 case "bookmark":
                     return "tag";
