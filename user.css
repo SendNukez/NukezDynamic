@@ -1782,3 +1782,9 @@ button[data-button="add-recommendation"] {
 .SearchInput__input:hover {
     background-color: rgba(var(--modspotify_rgb_main_fg), 0.2);
 }
+
+/* JQBX */
+iframe.jqbx {
+    padding-bottom: 10px;
+    border-top-right-radius: var(--main-corner-radius);
+}
